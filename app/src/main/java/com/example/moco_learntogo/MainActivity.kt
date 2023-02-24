@@ -15,6 +15,8 @@ import com.example.moco_learntogo.data.location.LocationDetails
 import com.example.moco_learntogo.ui.theme.MoCo_learntogoTheme
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 
 class MainActivity : ComponentActivity() {
 
@@ -33,6 +35,16 @@ class MainActivity : ComponentActivity() {
                     val context = LocalContext.current
                     var currentLocation by remember {
                         mutableStateOf(LocationDetails(0.toDouble(), 0.toDouble()))
+                    }
+
+                    fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
+                    locationCallback = object : LocationCallback() {
+                        override fun onLocationResult(p0: LocationResult) {
+                            for (lo in p0.locations) {
+                                // Update UI with location data
+                                currentLocation = LocationDetails(lo.latitude, lo.longitude)
+                            }
+                        }
                     }
 
 
