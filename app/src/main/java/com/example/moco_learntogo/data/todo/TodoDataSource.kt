@@ -1,5 +1,6 @@
-package com.example.moco_learntogo
+package com.example.moco_learntogo.data.todo
 
+import com.example.moco_learntogo.data.todo.room.Todo
 import kotlinx.coroutines.Dispatchers
 
 class TodoDataSource(private val todoDao: TodoDao) {

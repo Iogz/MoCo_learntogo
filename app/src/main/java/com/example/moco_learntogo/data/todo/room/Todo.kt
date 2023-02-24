@@ -1,4 +1,4 @@
-package com.example.moco_learntogo
+package com.example.moco_learntogo.data.todo.room
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
